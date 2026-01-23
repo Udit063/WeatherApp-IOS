@@ -16,7 +16,7 @@ struct DetailPage: View {
             VStack(spacing: 20){
                 Image(systemName: location.weather.icon)
                     .font(.system(size: 80))
-                    .foregroundColor(.white)
+                    .foregroundColor(location.weather.iconColor)
                     .padding()
                 
                 Text(location.name)
@@ -27,6 +27,8 @@ struct DetailPage: View {
                 Text("\(location.temperature.max)°C / \(location.temperature.min)°C")
                     .font(.title)
                     .foregroundColor(.white.opacity(0.6))
+                
+                Spacer().frame(height: 20)
                 
                 Text(location.description)
                     .font(.body)

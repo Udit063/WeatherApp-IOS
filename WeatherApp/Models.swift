@@ -29,6 +29,16 @@ enum Weather: String{
             return "wind"
         }
     }
+    
+    var iconColor: Color {
+        switch self {
+        case .sunny: return .yellow
+        case .foggy: return .gray
+        case .snow:  return .cyan
+        case .rainy: return .blue
+        case .windy: return .mint
+        }
+    }
 }
 
 struct Temperature{
