@@ -37,20 +37,20 @@ This project is beginner-friendly and demonstrates key SwiftUI concepts:
 ---
 
 ## 🧱 Project Structure
-
+```
 WeatherApp/
 │
-├── WeatherAppApp.swift # App Entry Point
-├── ContentView.swift # Global dark theme + NavigationStack
+├── WeatherAppApp.swift        # App Entry Point
+├── ContentView.swift          # Global dark theme + NavigationStack
 │
-├── Models.swift # WeatherType, Temperature, Location models
+├── Models.swift               # WeatherType, Temperature, Location models
 │
-├── LandingPage.swift # Logo + navigation to list
-├── LocationListPage.swift # Search + list inside bluish card
-├── DetailPage.swift # Weather details screen
+├── LandingPage.swift          # Logo + navigation to list
+├── LocationListPage.swift     # Search + list inside bluish card
+├── DetailPage.swift           # Weather details screen
 │
-└── Assets.xcassets # App images & colors
-
+└── Assets.xcassets            # App images & colors
+```
 
 ---
 
