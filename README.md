@@ -86,14 +86,14 @@ Color(red: 0.03, green: 0.08, blue: 0.20)
 ## 📱 Screenshots
 
 ### 🏠 Home Page
-![Home](screenshots/Home.png){: width="300px" }
+![Home](WeatherApp/screenshots/Home.png){: width="300px" }
 
 ### 📍 Location List
-![List](screenshots/List.png){: width="300px" }
+![List](WeatherApp/screenshots/List.png){: width="300px" }
 
 ### 🔍 Search View
-![Search](screenshots/Search.png){: width="300px" }
+![Search](WeatherApp/screenshots/Search.png){: width="300px" }
 
 ### 🌤️ Detail Page
-![Detail](screenshots/Detail.png){: width="300px" }
+![Detail](WeatherApp/screenshots/Detail.png){: width="300px" }
 
