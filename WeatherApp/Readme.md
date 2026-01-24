@@ -79,9 +79,10 @@ WeatherApp/
 ## 🎨 UI Theme
 
 ### Outer Background (global)
-```swift
 Color(red: 0.03, green: 0.08, blue: 0.20)
 
+---
+            
 ## 📱 Screenshots
 
 ### 🏠 Home Page
