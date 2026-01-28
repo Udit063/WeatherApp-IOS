@@ -55,6 +55,7 @@ struct LocationListPage: View {
             }
         }
         .navigationTitle("Locations")
+        .toolbarColorScheme(.dark)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
