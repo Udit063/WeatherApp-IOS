@@ -44,6 +44,8 @@ struct DetailPage: View {
     NavigationStack {
         DetailPage(location: Location(
             name: "Mumbai",
+            latitude: 18.975,
+            longitude: 72.825,
             weather: .sunny,
             temperature: Temperature(min:22, max:32),
             description: "A warm and humid day with clear skies."

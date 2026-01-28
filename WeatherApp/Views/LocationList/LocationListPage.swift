@@ -50,7 +50,7 @@ struct LocationListPage: View {
                         }
                     }
                 }
-                .scrollContentBackground(.hidden)   // ← REQUIRED
+                .scrollContentBackground(.hidden)  
                 .background(Color.clear)
             }
         }
