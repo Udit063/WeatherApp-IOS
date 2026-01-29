@@ -30,7 +30,7 @@ struct WeatherView: View {
                     .font(.title)
                     .foregroundColor(.white)
                 
-                Text(viewModel.liveTemperature)
+                Text(viewModel.temperatureText)
                     .font(.system(size: 40, weight: .bold))
                     .foregroundColor(.white)
                 
@@ -38,6 +38,13 @@ struct WeatherView: View {
                 //                           .foregroundColor(.secondary)
                 
                 Spacer()
+                
+                if let error = viewModel.errorMessage {
+                               Text(error)
+                                   .foregroundColor(.red)
+                                   .multilineTextAlignment(.center)
+                           } 
+
             }
             .padding()
             .task {

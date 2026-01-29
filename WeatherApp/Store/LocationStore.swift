@@ -11,7 +11,7 @@ import Combine
 final class LocationStore: ObservableObject {
 
     @Published var locations: [Location]
-
+    
     init() {
         self.locations = LocationList
     }

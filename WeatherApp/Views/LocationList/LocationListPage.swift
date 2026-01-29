@@ -23,9 +23,9 @@ extension View {
 
 struct LocationListPage: View {
     @StateObject private var store = LocationStore()
+    @StateObject private var cache = WeatherCache.shared
     @State private var searchText = ""
     @State private var showAddLocation = false
-
     
     var filteredLocations: [Location] {
         searchText.isEmpty
@@ -49,6 +49,9 @@ struct LocationListPage: View {
                                 .foregroundColor(location.weather.iconColor)
                             Text(location.name)
                             Spacer()
+                            Text( cache.getTemperature(for: location.id)
+                                .map { String(format: "%.2f°C", $0) } ?? "--")
+                                            .foregroundColor(.secondary)
 //                            Text("\(location.temperature.min)°/\(location.temperature.max)°")
 //                            Text(location.temperature.temperaturText)
 //                                    .foregroundColor(.secondary)
