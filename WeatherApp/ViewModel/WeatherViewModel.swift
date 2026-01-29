@@ -5,8 +5,11 @@ import Combine
 @MainActor
 final class WeatherViewModel: ObservableObject {
 
-    @Published var liveTemperature: String = "--"
     let location: Location
+
+    @Published var temperatureText: String = "--"
+    @Published var errorMessage: String?
+    @Published var isLoading = false
 
     private let service: WeatherServiceProtocol
 
@@ -19,17 +22,22 @@ final class WeatherViewModel: ObservableObject {
     }
 
     func fetchWeather() async {
+        isLoading = true
+        errorMessage = nil
+
         do {
-            let response = try await service.fetchWeather(
+            let temp = try await service.fetchWeather(
                 latitude: location.latitude,
-                longitude: location.longitude
+                longitude: location.longitude,
+                locationID: location.id
             )
 
-//            liveTemperature = "\(response.current.temperature2M - 2) / \(response.current.temperature2M + 2) °C"
-            liveTemperature = "\(response.current.temperature2M) °C"
+            temperatureText = String(format: "%.2f°C", temp)
 
         } catch {
-            print("API Error:", error)
+            errorMessage = "Unable to fetch weather.\nPlease try again later."
         }
+
+        isLoading = false
     }
 }
