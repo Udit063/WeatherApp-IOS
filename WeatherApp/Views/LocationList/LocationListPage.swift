@@ -22,13 +22,17 @@ extension View {
 
 
 struct LocationListPage: View {
+    @StateObject private var store = LocationStore()
     @State private var searchText = ""
+    @State private var showAddLocation = false
+
     
-    var filiteredLocations: [Location]{
-        if searchText.isEmpty{
-            return LocationList
+    var filteredLocations: [Location] {
+        searchText.isEmpty
+        ? store.locations
+        : store.locations.filter {
+            $0.name.lowercased().contains(searchText.lowercased())
         }
-        return LocationList.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
     
     var body: some View {
@@ -38,7 +42,7 @@ struct LocationListPage: View {
             
             VStack{
                 SearchBar(text: $searchText)
-                List(filiteredLocations, id: \.id){ location in
+                List(filteredLocations, id: \.id){ location in
                     NavigationLink(destination: WeatherView(location: location)){
                         HStack{
                             Image(systemName: location.weather.icon)
@@ -59,6 +63,21 @@ struct LocationListPage: View {
         .navigationTitle("Locations")
         .toolbarColorScheme(.dark)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+                   ToolbarItem(placement: .navigationBarTrailing) {
+                       Button {
+                           showAddLocation = true
+                       } label: {
+                           Image(systemName: "plus")
+                       }
+                   }
+               }
+               .sheet(isPresented: $showAddLocation) {
+                   AddLocationView(store: store)
+               }
+               .onAppear {
+                   print("📄 List locations count:", store.locations.count)
+               }
     }
 }
 
