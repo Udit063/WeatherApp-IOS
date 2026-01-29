@@ -5,35 +5,31 @@ import Combine
 @MainActor
 final class WeatherViewModel: ObservableObject {
 
-    @Published var temperatureText: String = "--"
-    @Published var cityName: String = ""
-    @Published var isLoading = false
-    @Published var errorMessage: String?
+    @Published var liveTemperature: String = "--"
+    let location: Location
 
     private let service: WeatherServiceProtocol
 
-    init(service: WeatherServiceProtocol = WeatherService()) {
+    init(
+        location: Location,
+        service: WeatherServiceProtocol = WeatherService()
+    ) {
+        self.location = location
         self.service = service
     }
 
-    func fetchWeather(for location: Location) async {
-        isLoading = true
-        errorMessage = nil
-        cityName = location.name
-
+    func fetchWeather() async {
         do {
             let response = try await service.fetchWeather(
                 latitude: location.latitude,
                 longitude: location.longitude
             )
 
-            temperatureText =
-            "\(response.current.temperature2M) \(response.currentUnits.temperature2M)"
+//            liveTemperature = "\(response.current.temperature2M - 2) / \(response.current.temperature2M + 2) °C"
+            liveTemperature = "\(response.current.temperature2M) °C"
 
         } catch {
-            errorMessage = error.localizedDescription
+            print("API Error:", error)
         }
-
-        isLoading = false
     }
 }

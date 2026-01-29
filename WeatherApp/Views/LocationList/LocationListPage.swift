@@ -38,14 +38,16 @@ struct LocationListPage: View {
             
             VStack{
                 SearchBar(text: $searchText)
-                List(filiteredLocations){ location in
+                List(filiteredLocations, id: \.id){ location in
                     NavigationLink(destination: WeatherView(location: location)){
                         HStack{
-//                            Image(systemName: location.weather.icon)
-//                                .foregroundColor(location.weather.iconColor)
+                            Image(systemName: location.weather.icon)
+                                .foregroundColor(location.weather.iconColor)
                             Text(location.name)
                             Spacer()
 //                            Text("\(location.temperature.min)°/\(location.temperature.max)°")
+//                            Text(location.temperature.temperaturText)
+//                                    .foregroundColor(.secondary)
                                 
                         }
                     }
