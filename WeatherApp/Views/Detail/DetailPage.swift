@@ -16,7 +16,7 @@ struct WeatherView: View {
 
     var body: some View {
         ZStack{
-            Color(red: 0.03, green: 0.08, blue: 0.20)
+            Color(.background)
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
@@ -43,7 +43,7 @@ struct WeatherView: View {
                                Text(error)
                                    .foregroundColor(.red)
                                    .multilineTextAlignment(.center)
-                           } 
+                           }
 
             }
             .padding()

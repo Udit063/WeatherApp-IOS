@@ -10,7 +10,7 @@ import SwiftUI
 struct LandingPage: View {
     var body: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.027, green: 0.082, blue: 0.207, alpha: 1))
+            Color(.background)
                 .ignoresSafeArea()
             VStack(spacing: 25){
                 Spacer()
